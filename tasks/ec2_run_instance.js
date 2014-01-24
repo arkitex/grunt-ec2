@@ -25,7 +25,7 @@ module.exports = function (grunt) {
             InstanceType: conf('AWS_INSTANCE_TYPE'),
             MinCount: 1,
             MaxCount: 1,
-            KeyName: name,
+            KeyName: conf('EXISTING_SSH_KEY_NAME') || name,
             SecurityGroups: [conf('AWS_SECURITY_GROUP')]
         };
         var cmd = 'ec2 run-instances --image-id %s --instance-type %s --count %s --key-name %s --security-groups %s';
@@ -34,6 +34,9 @@ module.exports = function (grunt) {
 
         function next (result) {
             var elastic = conf('ELASTIC_IP');
+
+            grunt.log.ok('ELASTIC IP ---- ' +  conf('ELASTIC_IP'));
+
             var id = result.Instances[0].InstanceId;
             var tasks = [
                 util.format('ec2_create_tag:%s:%s', id, name)

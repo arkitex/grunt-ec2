@@ -20,13 +20,22 @@ module.exports = function (grunt) {
 
         lookup(name, function (instance) {
             var elastic = conf('ELASTIC_IP');
+            var existingKey = conf('EXISTING_SSH_KEY_NAME');
+
             var id = instance.InstanceId;
             var ip = instance.PublicIpAddress;
+
             var tasks = [
                 'ec2_terminate_instance:' + id,
                 'ec2_delete_keypair:' + name,
                 'ec2_delete_tag:' + id
             ];
+
+            if (existingKey)
+                tasks = [
+                    'ec2_terminate_instance:' + id,
+                    'ec2_delete_tag:' + id
+                ];
 
             if (elastic) {
                 tasks.push('ec2_release_address:' + ip);

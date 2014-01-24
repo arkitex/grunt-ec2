@@ -17,6 +17,9 @@ module.exports = function (name, done) {
     lookup(name, function (instance) {
         var keyFile = path.join(conf('SSH_KEYS_FOLDER'), name + '.pem');
 
+        if (conf('EXISTING_SSH_KEY_NAME') && conf('EXISTING_SSH_KEY_NAME') != '')
+            keyFile = path.join(conf('SSH_KEYS_FOLDER'), conf('EXISTING_SSH_KEY_NAME') + '.pem');
+
         var result = cache[name] = {
             id: instance.InstanceId,
             ip: instance.PublicIpAddress,

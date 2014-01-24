@@ -83,11 +83,21 @@ module.exports = function (grunt) {
         function peek () {
             grunt.log.writeln('Flushing...');
 
-            ssh([
-                'tail -3 /var/log/nginx/error.log',
-                'sudo pm2 flush',
-                'sudo pm2 list'
-            ], { name: name }, done);
+            grunt.log.writeln('NGINX ENABLED -' + conf('NGINX_ENABLED'));
+
+            if (conf('NGINX_ENABLED')) {
+                ssh([
+                    'tail -3 /var/log/nginx/error.log',
+                    'sudo pm2 flush',
+                    'sudo pm2 list'
+                ], { name: name }, done);
+            }
+            else {
+                ssh([
+                    'sudo pm2 flush',
+                    'sudo pm2 list'
+                ], { name: name }, done);
+            }
         }
     });
 };

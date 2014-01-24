@@ -4,3 +4,4 @@ node_modules
 # SSH keys
 *.pem
 *.pem.pub
+*.idea
