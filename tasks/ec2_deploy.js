@@ -31,6 +31,7 @@ module.exports = function (grunt) {
         var rsync = {
             name: 'v' + v,
             local: local,
+            remoteLocal: '.',
             remote: conf('SRV_RSYNC_LATEST'),
             dest: dest,
             includes: conf('RSYNC_INCLUDES').map(env),
