@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git://github.com/bevacqua/grunt-ec2.git"
   },
-  "version": "1.0.3",
+  "version": "1.0.4",
   "licenses": "MIT",
   "keywords": [
     "gruntplugin",
@@ -36,7 +36,8 @@
     "mkdirp": "~0.3.5",
     "moment": "~2.5.0",
     "mustache": "~0.8.1",
-    "ssh2": "~0.2.15"
+    "ssh2": "~0.2.15",
+    "userhome": "~0.1.0"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.8.0",

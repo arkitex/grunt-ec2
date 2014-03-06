@@ -4,6 +4,7 @@ var fs = require('fs');
 var path = require('path');
 var lookup = require('./lookup.js');
 var conf = require('./conf.js');
+var userhome = require('userhome');
 var cache = {};
 
 module.exports = function (name, done) {
@@ -20,8 +21,9 @@ module.exports = function (name, done) {
         if (conf('EXISTING_SSH_KEY_NAME') && conf('EXISTING_SSH_KEY_NAME') != '')
             keyFile = path.join(conf('SSH_KEYS_FOLDER'), conf('EXISTING_SSH_KEY_NAME') + '.pem');
 
-        if (conf('SSH_KEY') != '')
-            keyFile = conf('SSH_KEY');
+        if (conf('SSH_KEY') != '') {
+            keyFile = conf('SSH_KEY').replace('~', userhome());
+        }
 
         var result = cache[name] = {
             id: instance.InstanceId,
