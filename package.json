@@ -3,15 +3,14 @@
   "description": "Grunt tasks to create, terminate, and deploy to AWS EC2 instances",
   "homepage": "https://github.com/bevacqua/grunt-ec2",
   "author": {
-    "name": "Nicolas Bevacqua",
-    "email": "ng@bevacqua.io",
-    "url": "http://bevacqua.io"
+    "name": "Ethan Lo",
+    "email": "arkitex@gmail.com"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/bevacqua/grunt-ec2.git"
   },
-  "version": "1.0.0",
+  "version": "1.0.3",
   "licenses": "MIT",
   "keywords": [
     "gruntplugin",
