@@ -20,7 +20,7 @@ module.exports = function (name, done) {
         if (conf('EXISTING_SSH_KEY_NAME') && conf('EXISTING_SSH_KEY_NAME') != '')
             keyFile = path.join(conf('SSH_KEYS_FOLDER'), conf('EXISTING_SSH_KEY_NAME') + '.pem');
 
-        if (conf('SSH_KEY'))
+        if (conf('SSH_KEY') != '')
             keyFile = conf('SSH_KEY');
 
         var result = cache[name] = {
