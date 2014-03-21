@@ -55,6 +55,7 @@ module.exports = function (grunt) {
             'sudo npm rebuild'
         ]), [
             util.format('sudo ln -sfn %s %s', dest, target),
+            commands.pm2_ping(),
             commands.pm2_reload(),
             commands.pm2_start(name)
         ], workflow.if_has('NGINX_ENABLED', [

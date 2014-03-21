@@ -7,6 +7,9 @@ var parse = require('./parse.js');
 var running = '[[ $(pm2 jlist) != "[]" ]]';
 
 module.exports = {
+    pm2_ping: function () {
+        return util.format('sudo pm2 ping');
+    },
     pm2_reload: function () {
         return util.format('%s && sudo pm2 reload all || echo "pm2 not started."', running);
     },
